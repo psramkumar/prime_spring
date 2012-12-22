@@ -34,11 +34,6 @@ public class UserManagedBean implements Serializable {
 	private String name;
 	private String surname;
 
-	/**
-	 * Add User
-	 * 
-	 * @return String - Response Message
-	 */
 	public String addUser() {
 		try {
 			User user = new User();
@@ -54,52 +49,26 @@ public class UserManagedBean implements Serializable {
 		return ERROR;
 	}
 
-	/**
-	 * Reset Fields
-	 * 
-	 */
 	public void reset() {
 		this.setId(0);
 		this.setName("");
 		this.setSurname("");
 	}
 
-	/**
-	 * Get User List
-	 * 
-	 * @return List - User List
-	 */
 	public List<User> getUserList() {
 		userList = new ArrayList<User>();
 		userList.addAll(getUserService().getUsers());
 		return userList;
 	}
 
-	/**
-	 * Get User Service
-	 * 
-	 * @return IUserService - User Service
-	 */
 	public IUserService getUserService() {
 		return userService;
 	}
 
-	/**
-	 * Set User Service
-	 * 
-	 * @param IUserService
-	 *            - User Service
-	 */
 	public void setUserService(IUserService userService) {
 		this.userService = userService;
 	}
 
-	/**
-	 * Set User List
-	 * 
-	 * @param List
-	 *            - User List
-	 */
 	public void setUserList(List<User> userList) {
 		this.userList = userList;
 	}
