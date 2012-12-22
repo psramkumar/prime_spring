@@ -14,16 +14,16 @@
 
     <authentication-manager>
         <authentication-provider>
-            <!--user-service>
+            <user-service>
                 <user name="root" password="tiger" authorities="supervisor, teller, ROLE_USER" />
                 <user name="admin" password="tiger" authorities="teller, ROLE_USER" />
                 <user name="scott" password="tiger" authorities="ROLE_USER" />
                 <user name="system" password="tiger" authorities="ROLE_USER" />
-            </user-service -->
-            <jdbc-user-service data-source-ref="DataSource"
+            </user-service >
+            <!--jdbc-user-service data-source-ref="DataSource"
 				users-by-username-query="select username, password, enabled from users where USERNAME = ?" 
 				authorities-by-username-query="select u.username, ur.authority from users u, user_roles ur 
-				where u.user_id = ur.user_id and u.username = ?"/>
+				where u.user_id = ur.user_id and u.username = ?"/ -->
         </authentication-provider>
     </authentication-manager>
 </beans:beans>   

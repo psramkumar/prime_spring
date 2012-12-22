@@ -24,10 +24,11 @@
 			</tr>
 			<tr>
 				<td><h:outputLabel for="surname" value="Surname : " /></td>
-				<td><p:inputText id="surname" value="#{userMB.surname}">
+				<td>
+					 <p:keyboard id="surname" value="#{userMB.surname}">
 						<f:validateLength minimum="5" />
 						<p:ajax event="blur" update="surnameMsg" />
-					</p:inputText> <p:message id="surnameMsg" for="surname" display="icon" /></td>
+					</p:keyboard> <p:message id="surnameMsg" for="surname" display="icon" /></td>
 			</tr>
 			<tr>
 				<td><p:commandButton id="addUser" value="Add"
