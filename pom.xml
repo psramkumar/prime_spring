@@ -3,10 +3,10 @@
 
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.ttech.advn.prj</groupId>
-	<artifactId>spr-hib-prm</artifactId>
+	<artifactId>prime_spring</artifactId>
 	<packaging>war</packaging>
 	<version>1.0-SNAPSHOT</version>
-	<name>spr-hib-prm</name>
+	<name>prime_spring</name>
 	<url>http://www.triadic.net</url>
 
 	<properties>
@@ -161,7 +161,7 @@
 	</dependencies>
 
 	<build>
-		<finalName>spr-hib-prm</finalName>
+		<finalName>prime_spring</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
