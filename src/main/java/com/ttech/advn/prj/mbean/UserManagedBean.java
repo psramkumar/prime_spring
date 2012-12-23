@@ -4,19 +4,19 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
 
 import lombok.Data;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
+import org.springframework.stereotype.Controller;
 
 import com.ttech.advn.prj.dao.entity.User;
 import com.ttech.advn.prj.service.IUserService;
 
 @Data
-@ManagedBean(name = "userMB")
+@Controller("userMB")
 @RequestScoped
 public class UserManagedBean implements Serializable {
 
@@ -24,8 +24,7 @@ public class UserManagedBean implements Serializable {
 	private static final String SUCCESS = "success";
 	private static final String ERROR = "error";
 
-	// Spring User Service is injected...
-	@ManagedProperty(value = "#{UserService}")
+	@Autowired
 	IUserService userService;
 
 	List<User> userList;
@@ -40,7 +39,7 @@ public class UserManagedBean implements Serializable {
 			user.setId(getId());
 			user.setName(getName());
 			user.setSurname(getSurname());
-			getUserService().addUser(user);
+			userService.addUser(user);
 			return SUCCESS;
 		} catch (DataAccessException e) {
 			e.printStackTrace();
@@ -57,20 +56,7 @@ public class UserManagedBean implements Serializable {
 
 	public List<User> getUserList() {
 		userList = new ArrayList<User>();
-		userList.addAll(getUserService().getUsers());
+		userList.addAll(userService.getUsers());
 		return userList;
 	}
-
-	public IUserService getUserService() {
-		return userService;
-	}
-
-	public void setUserService(IUserService userService) {
-		this.userService = userService;
-	}
-
-	public void setUserList(List<User> userList) {
-		this.userList = userList;
-	}
-
 }

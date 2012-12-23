@@ -1,64 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-		xmlns:tx="http://www.springframework.org/schema/tx"
-		xmlns:context="http://www.springframework.org/schema/context"
-		xsi:schemaLocation="http://www.springframework.org/schema/beans
-				http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
-				http://www.springframework.org/schema/tx 
-		        http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
-		        http://www.springframework.org/schema/context 
-		        http://www.springframework.org/schema/context/spring-context-3.0.xsd">
-	
-	<context:component-scan base-package="com.ttech" />
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ctx="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+           http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+           http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+           http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd"
+	default-autowire="byName">
 
-	<!-- Beans Declaration -->
-	<bean id="User" class="com.ttech.advn.prj.dao.entity.User"/>
+
+	<!--<bean id="dbPropertyConfigurer"	class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list><value>classpath:db.properties</value></list>
+		</property>
+		 <property name="driverClass" value="${jdbc.driver.className}"/>
+		<property name="jdbcUrl" value="${jdbc.url}" />
+		<property name="user" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" /> 
+	</bean> -->
+
+	<ctx:annotation-config />
+	<ctx:component-scan base-package="com.ttech.advn.prj" />
+
+	<mvc:annotation-driven />
 	
-	<!-- User Service Declaration -->
-	<bean id="UserService" class="com.ttech.advn.prj.service.UserService">
-		<property name="userDAO" ref="UserDAO" />
-	</bean>
-	
-	<!-- User DAO Declaration -->
-	<bean id="UserDAO" class="com.ttech.advn.prj.dao.UserDAO">
-		<property name="sessionFactory" ref="SessionFactory" />
-	</bean>
-	
-	<!-- Data Source Declaration -->
 	<bean id="DataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+
 		<property name="driverClass" value="com.mysql.jdbc.Driver" />	
 		<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/triadicx" />	
 		<property name="user" value="root" />	
 		<property name="password" value="root" />	
+		
 		<property name="maxPoolSize" value="10" />
 		<property name="maxStatements" value="0" />
 		<property name="minPoolSize" value="5" /> 
+		<property name="idleConnectionTestPeriod" value="15"/>
+		<property name="maxIdleTime" value="15"/>
+
 	</bean>
-	
-	<!-- Session Factory Declaration -->
+
 	<bean id="SessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
 		<property name="dataSource" ref="DataSource" />
-		<property name="annotatedClasses">
-			<list>
-				<value>com.ttech.advn.prj.dao.entity.User</value>
-			</list>
-		</property>
+		<property name="packagesToScan" value="com.ttech.advn.prj" />
 		<property name="hibernateProperties">
 			<props>
+				<!-- <prop key="hibernate.dialect">${jdbc.hibernate.dialect}</prop> -->
 				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
-				<prop key="hibernate.format_sql">true</prop>
+				<!-- uncomment this for first time run -->
 				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.c3p0.min_size">3</prop>
+				<prop key="hibernate.c3p0.max_size">40</prop>
+				<prop key="hibernate.c3p0.timeout">25200</prop>
+				<prop key="hibernate.c3p0.max_statements">0</prop>
+				<prop key="hibernate.c3p0.idle_test_period">14400</prop>
+
+				<prop key="connection.autoReconnect">true</prop>
+				<prop key="connection.autoReconnectForPools">true</prop>
+				<prop key="connection.is-connection-validation-required">true</prop>
+				<prop key="hibernate.c3p0.acquire_increment">3</prop>
+				<prop key="hibernate.c3p0.preferredTestQuery">select 1</prop>
+				<prop key="defaultAutoCommit">false</prop>
 				<prop key="hibernate.hbm2ddl.auto">create-drop</prop>
 			</props>
 		</property>
 	</bean>
 	
-	<!-- Enable the configuration of transactional behavior based on annotations -->
-    <tx:annotation-driven transaction-manager="txManager"/>
+	<tx:annotation-driven transaction-manager="transactionManager" />
+	<bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="SessionFactory"/>
+	</bean>
 
-	<!-- Transaction Manager is defined -->
-    <bean id="txManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
-       <property name="sessionFactory" ref="SessionFactory"/>
-    </bean>
-  
 </beans>

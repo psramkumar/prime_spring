@@ -24,8 +24,7 @@
 			</tr>
 			<tr>
 				<td><h:outputLabel for="surname" value="Surname : " /></td>
-				<td>
-					 <p:keyboard id="surname" value="#{userMB.surname}">
+				<td><p:keyboard id="surname" value="#{userMB.surname}">
 						<f:validateLength minimum="5" />
 						<p:ajax event="blur" update="surnameMsg" />
 					</p:keyboard> <p:message id="surnameMsg" for="surname" display="icon" /></td>
@@ -38,5 +37,47 @@
 			</tr>
 		</table>
 	</h:form>
+	<h:form prependId="false">
+
+		<p:growl id="msgs" />
+
+		<p:panel header="Inplace Editor">
+			<h:panelGrid columns="2" columnClasses="column" cellpadding="5">
+				<h:outputText value="Basic Input: " />
+				<p:inplace id="basic">
+					<p:inputText value="Edit Me" />
+				</p:inplace>
+
+				<h:outputText value="Ajax Inplace Editor: " />
+				<p:inplace id="ajaxInplace" editor="true">
+					<p:inputText value="#{inplaceBean.text}" required="true"
+						label="text" />
+				</p:inplace>
+
+				<h:outputText value="Select One (Dlbclick): " />
+				<p:inplace id="selectableInplace" label="Cities" effectSpeed="fast"
+					event="dblclick">
+					<h:selectOneMenu>
+						<f:selectItem itemLabel="Istanbul" itemValue="Istanbul" />
+						<f:selectItem itemLabel="Ankara" itemValue="Ankara" />
+						<f:selectItem itemLabel="Istanbul" itemValue="Istanbul" />
+					</h:selectOneMenu>
+				</p:inplace>
+
+				<h:outputText value="Checkbox: " />
+				<p:inplace id="checkboxInplace" label="Edit me" effect="none">
+					<h:selectBooleanCheckbox />
+				</p:inplace>
+
+				<h:outputText value="Sliding Image: " />
+				<p:inplace id="slidingInplace" label="Show" effect="slide">
+					<p:graphicImage
+						value="http://www.primefaces.org/showcase-labs/images/loading.gif" />
+				</p:inplace>
+			</h:panelGrid>
+		</p:panel>
+
+	</h:form>
+
 </h:body>
 </html>

@@ -5,38 +5,34 @@ import java.util.List;
 import com.ttech.advn.prj.dao.entity.User;
 
 import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public class UserDAO implements IUserDAO {
 	
+	@Autowired
 	private SessionFactory sessionFactory;
-
-	public SessionFactory getSessionFactory() {
-		return sessionFactory;
-	}
-
-	public void setSessionFactory(SessionFactory sessionFactory) {
-        this.sessionFactory = sessionFactory;
-    }
 
 	@Override
 	public void addUser(User user) {
-		getSessionFactory().getCurrentSession().save(user);
+		sessionFactory.getCurrentSession().save(user);
 	}
 
 	@Override
 	public void deleteUser(User user) {
-		getSessionFactory().getCurrentSession().delete(user);
+		sessionFactory.getCurrentSession().delete(user);
 	}
 
 	@Override
 	public void updateUser(User user) {
-		getSessionFactory().getCurrentSession().update(user);
+		sessionFactory.getCurrentSession().update(user);
 	}
 
 	@Override
 	public User getUserById(int id) {
 		@SuppressWarnings("unchecked")
-		List<User> list = getSessionFactory()
+		List<User> list = sessionFactory
 				.getCurrentSession()
 				.createQuery("from User where id=?")
 				.setParameter(0, id).list();
@@ -46,7 +42,7 @@ public class UserDAO implements IUserDAO {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<User> getUsers() {
-		return getSessionFactory().getCurrentSession().createQuery("from User").list();
+		return sessionFactory.getCurrentSession().createQuery("from User").list();
 	}
 
 }
