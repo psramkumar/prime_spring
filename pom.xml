@@ -128,11 +128,13 @@
 			<version>${spring.security.version}</version>
 		</dependency>
 
-		<!-- <dependency>
+		<!-- 
+		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-web</artifactId>
 			<version>${spring.security.version}</version>
-		</dependency> -->
+		</dependency> 
+		-->
 
 		<dependency>
 			<groupId>org.springframework.security</groupId>
@@ -158,6 +160,12 @@
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
 		</dependency>
+		
+		<dependency>
+		  	<groupId>javax.servlet</groupId>
+		  	<artifactId>servlet-api</artifactId>
+		  	<version>2.5</version>
+		</dependency>
 
 		<!-- Primefaces library -->
 		<dependency>
@@ -173,29 +181,30 @@
 			<version>${hibernate.version}</version>
 		</dependency>
 
-		<!-- <dependency>
-			<groupId>c3p0</groupId>
-			<artifactId>c3p0</artifactId>
-			<version>0.9.1.2</version>
-		</dependency> -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-c3p0</artifactId>
 			<version>${hibernate.version}</version>
 		</dependency>
-		
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-validator</artifactId>
-			<version>4.3.0.Final</version>
-		</dependency>
-		
+		<!--
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-ehcache</artifactId>
 			<version>${hibernate.version}</version>
 		</dependency>
 		
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-search</artifactId>
+			<version>4.1.1.Final</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>4.3.1.Final</version>
+		</dependency>
+		-->
 		<dependency>
 			<groupId>javassist</groupId>
 			<artifactId>javassist</artifactId>
