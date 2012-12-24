@@ -125,6 +125,12 @@
 			<artifactId>primefaces</artifactId>
 			<version>${primefaces.version}</version>
 		</dependency>
+		
+		 <dependency>
+	        <groupId>org.primefaces.extensions</groupId>
+	        <artifactId>primefaces-extensions</artifactId>
+	        <version>0.6.2</version>
+	    </dependency>
 
 		<!-- Hibernate library -->
 		<dependency>

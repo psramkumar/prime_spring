@@ -1,7 +1,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://primefaces.org/ui">
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions">
+	
 <h:head>
 	<title>Welcome to OTV_JSF_Spring_Hibernate_Project</title>
 </h:head>
@@ -30,6 +32,35 @@
 			</p:column>
 		</p:dataTable>
 	</h:form>
+	
+	<h:panelGroup id="dynaFormGroup">
+    <p:messages id="messages" showSummary="true"/>
+
+    <pe:dynaForm id="dynaForm" value="#{userMB.model}" var="data">
+        <pe:dynaFormControl type="input" for="txt">
+            <p:inputText id="txt" value="#{data.value}" required="#{data.required}"/>
+        </pe:dynaFormControl>
+        <pe:dynaFormControl type="calendar" for="cal" styleClass="calendar">
+            <p:calendar id="cal" value="#{data.value}" required="#{data.required}" showOn="button"/>
+        </pe:dynaFormControl>
+        <pe:dynaFormControl type="select" for="sel" styleClass="select">
+            <p:selectOneMenu id="sel" value="#{data.value}" required="#{data.required}">
+                <f:selectItems value="#{userMB.languages}"/>
+            </p:selectOneMenu>
+        </pe:dynaFormControl>
+        <pe:dynaFormControl type="textarea" for="tarea">
+            <p:inputTextarea id="tarea" value="#{data.value}" required="#{data.required}" autoResize="false"/>
+        </pe:dynaFormControl>
+        <pe:dynaFormControl type="rating" for="rat">
+            <p:rating id="rat" value="#{data.value}" required="#{data.required}"/>
+        </pe:dynaFormControl>
+
+        <f:facet name="buttonBar">
+            <p:commandButton value="Submit" action="#{userMB.submitForm}"/>
+            <p:commandButton type="reset" value="Reset" style="margin-left: 5px;"/>
+        </f:facet>
+    </pe:dynaForm>
+</h:panelGroup>
 </h:body>
 
 </html>
