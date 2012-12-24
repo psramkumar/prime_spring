@@ -62,15 +62,14 @@ public class UserManagedBean implements Serializable {
 	public List<User> getUserList() {
 		userList = new ArrayList<User>();
 		userList.addAll(userService.getUsers());
-		controlRoom();
 		return userList;
 	}
 	
 	 private DynaFormModel model;
 
 	 private static List<SelectItem> LANGUAGES = new ArrayList<SelectItem>();
-	
-	 public void controlRoom(){
+	 
+	 public UserManagedBean(){
 		 model = new DynaFormModel();
 
 	      // add rows, labels and editable controls
