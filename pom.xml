@@ -131,7 +131,13 @@
 	        <artifactId>primefaces-extensions</artifactId>
 	        <version>0.6.2</version>
 	    </dependency>
-
+	
+		<dependency>
+			<groupId>org.primefaces.themes</groupId>
+			<artifactId>all-themes</artifactId>
+			<version>1.0.9</version>
+		</dependency>
+		
 		<!-- Hibernate library -->
 		<dependency>
 			<groupId>org.hibernate</groupId>

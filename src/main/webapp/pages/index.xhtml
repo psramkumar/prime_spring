@@ -1,13 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:pe="http://primefaces.org/ui/extensions">
-<h:head>
-	<title>Welcome</title>
-</h:head>
-<h:body>
-	<h:form>
+<ui:composition template="/pages/templates/default/template.xhtml">
+	<ui:define name="head">
+	
+	</ui:define>
+	<ui:define name="body" >
+		<div>
+			<h:form>
 		<table>
 			<tr>
 				<td><h:outputLabel for="id" value="Id : " /></td>
@@ -108,6 +113,11 @@
 	        </f:facet>
 	    </pe:dynaForm>
 	</h:panelGroup>
-
-</h:body>
+	       
+		</div>
+	</ui:define>
+	<ui:define name="footer">
+	
+	</ui:define>
+</ui:composition>
 </html>
