@@ -3,9 +3,7 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
-<h:head>
-	<title>Welcome</title>
-</h:head>
+<h:head></h:head>
 <h:body>
 	<h:form>
 		<p:menubar>
@@ -43,7 +41,7 @@
 				</p:submenu>
 				<p:submenu label="Non-Ajax" icon="ui-icon-newwin">
 					<p:menuitem value="Delete" actionListener="#{userMB.delete}"
-						icon="ui-icon-close"  ajax="false" />
+						icon="ui-icon-close" ajax="false" />
 				</p:submenu>
 			</p:submenu>
 
@@ -54,6 +52,10 @@
 				<p:commandButton type="button" value="Logout" icon="ui-icon-extlink" />
 			</f:facet>
 		</p:menubar>
+		<p:breadCrumb >
+			<p:menuitem label="Categories" url="#" />
+			<p:menuitem label="Sports" url="#" />
+		</p:breadCrumb>
 	</h:form>
 </h:body>
 </html>

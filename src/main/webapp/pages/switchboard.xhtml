@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<!-- 
+		Replace path to template, title, header and body
+		with actual data.
+	 -->
+<ui:composition template="/pages/templates/default/template.xhtml">
+	<ui:define name="pageTitle">Title</ui:define>
+	<ui:define name="pageHeader">Header</ui:define>
+	<ui:define name="body">
+		<h:form jsfc="h:form" id="Form">
+			<p:dataTable var="item" value="#{switchBoardController.resultSet}" paginator="true" rows="15">>
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="SwitchboardID" />
+					</f:facet>
+					<h:outputText value="#{item.id.switchboardID}" />
+				</p:column>
+				<p:column sortBy="#{item.id.itemNumber}" filterBy="#{item.id.itemNumber}">
+					<f:facet name="header">
+						<h:outputText value="ItemNumber" />
+					</f:facet>
+					<h:outputText value="#{item.id.itemNumber}" />
+				</p:column>
+				<p:column filterBy="#{item.itemText}">
+					<f:facet name="header">
+						<h:outputText value="ItemText" />
+					</f:facet>
+					<h:outputText value="#{item.itemText}" />
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Command" />
+					</f:facet>
+					<h:outputText value="#{item.command}" />
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Argument" />
+					</f:facet>
+					<h:outputText value="#{item.argument}" />
+				</p:column>
+			</p:dataTable>
+
+		</h:form>
+	</ui:define>
+</ui:composition>
+
+</html>

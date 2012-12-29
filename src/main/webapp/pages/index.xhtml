@@ -10,10 +10,16 @@
 	<ui:define name="head">
 	
 	</ui:define>
+	<ui:define name="contentHeader">
+		Home Page
+	</ui:define><ui:define name="breadNav">Index Page</ui:define>
 	<ui:define name="body" >
 		<div>
 			<h:form>
+			 
 		<table>
+		<tr><td colspan="2"><h:commandLink action="home" title="Home" value="Home"/></td></tr>
+		<tr><td colspan="2"><h:commandLink action="switchboard" title="SwitchBoard" value="SwitchBoard"/></td></tr>
 			<tr>
 				<td><h:outputLabel for="id" value="Id : " /></td>
 				<td><p:inputText id="id" value="#{userMB.id}">
@@ -42,6 +48,16 @@
 						action="#{userMB.reset}" ajax="false" /></td>
 			</tr>
 		</table>
+		<h:outputText value="Date Of Birth " />
+		<p:inputMask  mask="99/99/9999" />
+		<h:outputText value="Phone: " />
+<p:inputMask  mask="(999) 999-9999"/>
+<h:outputText value="Phone with Ext: " />
+<p:inputMask  mask="(999) 999-9999? x99999"/>
+<h:outputText value="SSN: " />
+<p:inputMask  mask="999-99-9999"/>
+<h:outputText value="Product Key: " />
+<p:inputMask mask="a*-999-a999"/>
 	</h:form>
 	<h:form prependId="false">
 

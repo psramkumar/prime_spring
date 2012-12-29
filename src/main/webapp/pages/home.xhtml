@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions">
+	<ui:composition template="/pages/templates/default/template.xhtml">
+		<ui:define name="head"> </ui:define>
+		<ui:define name="body" >
+			<p:layout fullPage="true" >
+				<p:layoutUnit position="north" size="50">
+				<h:outputText value="Top content." />
+				</p:layoutUnit>
+				<p:layoutUnit position="south" size="100">
+				<h:outputText value="Bottom content." />
+				</p:layoutUnit>
+				<p:layoutUnit position="west" size="300">
+				<h:outputText value="Left content" />
+				</p:layoutUnit>
+				<p:layoutUnit position="east" size="200">
+				<h:outputText value="Right Content" />
+				</p:layoutUnit>
+				<p:layoutUnit position="center">
+				<h:outputText value="Center Content" />
+				</p:layoutUnit>
+				</p:layout>
+		</ui:define>
+	</ui:composition>
+</html>

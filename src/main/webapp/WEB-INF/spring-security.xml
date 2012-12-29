@@ -9,7 +9,7 @@
 
     <http auto-config="true">
         <intercept-url pattern="/**" access="ROLE_USER" />
-        <form-login />
+        <form-login login-processing-url="/login"/>
     </http>
 
     <authentication-manager>
