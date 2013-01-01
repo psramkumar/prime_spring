@@ -1,10 +1,7 @@
 package com.ttech.advn.prj.dao;
 
-import java.util.List;
-
 import com.ttech.advn.prj.dao.entity.SwitchboardItem;
 
-public interface ISwitchBoardDAO {
+public interface ISwitchBoardDAO<T> extends AbstractSupportDAOIN<SwitchboardItem>{
 
-	public List<SwitchboardItem> getResultset();
 }

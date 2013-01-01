@@ -13,13 +13,14 @@ import com.ttech.advn.prj.dao.entity.SwitchboardItem;
 @Transactional
 public class SwitchBoardService implements ISwitchBoardService {
 
+	@Autowired
+	ISwitchBoardDAO<SwitchboardItem> switchBoardDao;
+	
 	@Override
 	public List<SwitchboardItem> getResultset() {
-		return switchBoardDao.getResultset();
+		return switchBoardDao.resultSet();
 	}
 	
-	@Autowired
-	ISwitchBoardDAO switchBoardDao;
 	
 
 }

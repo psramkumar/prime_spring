@@ -15,33 +15,34 @@ public class UserService implements IUserService {
 
 	// UserDAO is injected...
 	@Autowired
-	IUserDAO userDAO;
+	IUserDAO<User> userDAO;
 	
 	//@Transactional(readOnly = false)
 	@Override
 	public void addUser(User user) {
-		userDAO.addUser(user);
+		userDAO.save(user);
+		System.out.println(user.getId());
 	}
 
 	//@Transactional(readOnly = false)
 	@Override
 	public void deleteUser(User user) {
-		userDAO.deleteUser(user);
+		userDAO.delete(user);
 	}
 	
 	//@Transactional(readOnly = false)
 	@Override
 	public void updateUser(User user) {
-		userDAO.updateUser(user);
+		userDAO.update(user);
 	}
 	
 	@Override
 	public User getUserById(int id) {
-		return userDAO.getUserById(id);
+		return userDAO.findById(id);
 	}
 
 	@Override
 	public List<User> getUsers() {	
-		return userDAO.getUsers();
+		return userDAO.resultSet();
 	}
 }
