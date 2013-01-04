@@ -12,7 +12,7 @@ public class SwitchboardItem implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@EmbeddedId
-	private SwitchboardItemPK id;
+	private SwitchboardItemPK id = new SwitchboardItemPK();
 
 	private String argument;
 

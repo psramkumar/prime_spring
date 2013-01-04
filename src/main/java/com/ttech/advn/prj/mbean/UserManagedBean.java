@@ -37,17 +37,10 @@ public class UserManagedBean implements Serializable {
 
 	List<User> userList;
 
-	private int id;
-	private String name;
-	private String surname;
-
 	public String addUser() {
 		try {
 			User user = new User();
-			user.setId(getId());
-			user.setName(getName());
-			user.setSurname(getSurname());
-			userService.addUser(user);
+			userService.save(user);
 			return SUCCESS;
 		} catch (DataAccessException e) {
 			e.printStackTrace();
@@ -57,14 +50,11 @@ public class UserManagedBean implements Serializable {
 	}
 
 	public void reset() {
-		this.setId(0);
-		this.setName("");
-		this.setSurname("");
 	}
 
 	public List<User> getUserList() {
 		userList = new ArrayList<User>();
-		userList.addAll(userService.getUsers());
+		userList.addAll(userService.getResultSet());
 		return userList;
 	}
 

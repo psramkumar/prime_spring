@@ -1,4 +1,4 @@
-package com.ttech.advn.prj.dao;
+package com.ttec.advn.prj.support;
 
 import java.util.List;
 
@@ -10,7 +10,7 @@ import org.hibernate.Session;
  * @since 01/01/2013 
  */
 
-public abstract interface AbstractSupportDAOIN<T> {
+public abstract interface AbstractSupportDAOIFace<T> {
 
 	public List<T> resultSet();
 	

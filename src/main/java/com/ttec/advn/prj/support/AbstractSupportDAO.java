@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.ttech.advn.prj.dao;
+package com.ttec.advn.prj.support;
 
 import java.util.List;
 
@@ -19,7 +19,7 @@ import org.springframework.beans.factory.annotation.Autowired;
  * @since 01/01/2013 
  */
 
-public abstract class AbstractSupportDAO<T> implements AbstractSupportDAOIN<T> {
+public abstract class AbstractSupportDAO<T> implements AbstractSupportDAOIFace<T> {
 
 	protected final Logger log = Logger.getLogger(getClass());
 	

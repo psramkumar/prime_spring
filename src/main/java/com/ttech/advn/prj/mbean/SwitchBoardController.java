@@ -5,17 +5,31 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
-import com.ttech.advn.prj.dao.entity.SwitchboardItem;
+import com.ttec.advn.prj.support.AbstractSupportController;
+import com.ttech.advn.prj.dao.entity.Role;
 import com.ttech.advn.prj.service.ISwitchBoardService;
 
 @Controller
-public class SwitchBoardController {
+public class SwitchBoardController extends AbstractSupportController<Role> {
 
 	@Autowired
 	ISwitchBoardService switchBoardService;
-	
-	public List<SwitchboardItem> getResultSet(){
-		return switchBoardService.getResultset();
+
+	public List<Role> getResultSet() {
+		return switchBoardService.getResultSet();
 	}
 	
+	public String addSwitchBoard(){
+		switchBoardService.save(getInstance());
+		return "switchboard";
+	}
+	public String reset(){
+		newInstance();
+		return "success";
+	}
+
+	
+
+	
+
 }

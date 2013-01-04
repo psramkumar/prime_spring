@@ -28,21 +28,6 @@
 
 	<mvc:annotation-driven />
 	
-	<bean id="DataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
-
-		<property name="driverClass" value="com.mysql.jdbc.Driver" />	
-		<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/triadicx" />	
-		<property name="user" value="root" />	
-		<property name="password" value="root" />	
-		
-		<property name="maxPoolSize" value="10" />
-		<property name="maxStatements" value="0" />
-		<property name="minPoolSize" value="5" /> 
-		<property name="idleConnectionTestPeriod" value="15"/>
-		<property name="maxIdleTime" value="15"/>
-
-	</bean>
-
 	<bean id="SessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
 		<property name="dataSource" ref="DataSource" />
 		<property name="packagesToScan" value="com.ttech.advn.prj" />
@@ -50,7 +35,8 @@
 			<props>
 				<!-- <prop key="hibernate.dialect">${jdbc.hibernate.dialect}</prop> -->
 				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
-				<!-- uncomment this for first time run -->
+				<!-- uncomment this for first time run 
+				<prop key="hibernate.hbm2ddl.auto">create-drop</prop> -->
 				<prop key="hibernate.show_sql">true</prop>
 				<prop key="hibernate.c3p0.min_size">3</prop>
 				<prop key="hibernate.c3p0.max_size">40</prop>
@@ -64,7 +50,7 @@
 				<prop key="hibernate.c3p0.acquire_increment">3</prop>
 				<prop key="hibernate.c3p0.preferredTestQuery">select 1</prop>
 				<prop key="defaultAutoCommit">false</prop>
-				<!-- <prop key="hibernate.hbm2ddl.auto">create-drop</prop> -->
+				
 			</props>
 		</property>
 	</bean>

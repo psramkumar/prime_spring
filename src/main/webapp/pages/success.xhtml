@@ -1,36 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
-	
-<h:head>
-	<title>Welcome to OTV_JSF_Spring_Hibernate_Project</title>
-</h:head>
-<h:body>
-	<h:form>
-		<h:outputText value="USERs : "></h:outputText>
-		<p:dataTable id="users" var="user" value="#{userMB.userList}"
-			style="width: 10%">
-			<p:column>
-				<f:facet name="header">
-					<h:outputText value="ID" />
-				</f:facet>
-				<h:outputText value="#{user.id}" />
-			</p:column>
-			<p:column>
-				<f:facet name="header">
-					<h:outputText value="Name" />
-				</f:facet>
-				<h:outputText value="#{user.name}" />
-			</p:column>
-			<p:column>
-				<f:facet name="header">
-					<h:outputText value="Surname" />
-				</f:facet>
-				<h:outputText value="#{user.surname}" />
-			</p:column>
-		</p:dataTable>
-	</h:form>
-</h:body>
+
+<ui:composition template="/pages/templates/default/template.xhtml">
+	<ui:define name="pageTitle">Title</ui:define>
+	<ui:define name="pageHeader">Header</ui:define>
+	<ui:define name="body">
+		<p:panel>
+			<h:form jsfc="h:form" id="Form">
+				<p:panelGrid columns="2" >
+					<p:outputLabel title="SwitchId">Role ID</p:outputLabel>
+					<p:inputText value="#{switchBoardController.instance.id}"/>
+					<p:outputLabel title="ItemNumber">Role Display Name</p:outputLabel>
+					<p:inputText value="#{switchBoardController.instance.name}"/>
+					<p:outputLabel title="ItemNumber">Role Name</p:outputLabel>
+					<p:inputText value="#{switchBoardController.instance.roleName}"/>
+					<p:outputLabel title="ItemNumber">Role Description</p:outputLabel>
+					<p:inputTextarea value="#{switchBoardController.instance.description}"/>
+					<p:commandButton id="addUser" value="Add" action="#{switchBoardController.addSwitchBoard}" ajax="false" />
+					<p:commandButton id="reset" value="Reset" action="#{switchBoardController.reset}" ajax="false" />
+				</p:panelGrid>
+			</h:form>
+		</p:panel>
+	</ui:define>
+</ui:composition>
 
 </html>

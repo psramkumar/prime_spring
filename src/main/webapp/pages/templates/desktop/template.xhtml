@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>G A R D I A N SHIP - <ui:insert name="pageTitle" /></title>
+	<ui:insert name="head" />
+	<meta charset="ISO-8859-1" />
+</h:head>
+<h:body>
+	<header>
+		<div id="globalheader" class="autocenter">
+			<ui:include src="header.xhtml" />
+		</div>
+	</header>
+	<section>
+		<div id="maincontainer" class="autocenter">
+			<div id="globalnavigation">
+				<ui:include src="menu.xhtml" />
+			</div>
+			<div id="contentarea" class="mainPane">
+				<div id="breadcrumbs">
+					<h:form id="breadNav" title="Bread Crumbs">
+						<p class="userlogin"><h:outputText value="Welcome "/> 
+							<h:outputText value="#{credentials.username} |" rendered="#{identity.loggedIn}"/> 
+							<h:outputText value="Guest " rendered="#{not identity.loggedIn}"/>
+							<h:commandLink value="Settings" rendered="#{identity.loggedIn}"/> | 
+							<h:commandLink value="Sign Out" rendered="#{identity.loggedIn}"/> 
+							<h:commandLink value="Sign in" rendered="#{not identity.loggedIn}"/>
+						</p>
+						<p class="breadcrumb"><ui:insert name="breadNav"/></p><!-- Define the Page Navigation -->
+					</h:form>
+				</div>
+				<div>
+					<div id="maincontent">
+						<div id="middle_content">
+							<div id="maincontainer">
+								<div id="fillertop">
+									<div id="maincontenttop">
+										<div id="maincontenttop2">
+		                        			<h1><ui:insert name="pageHeader"/></h1>
+		                        		</div>
+									</div>
+								</div>
+								<div id="maincontentleft">
+									<div id="maincontentright">
+										<div id="pagecontent" class="content"  style="margin: 0 auto;">
+											<ui:insert name="body"/> <!-- Real Content -->
+										</div>
+									</div>
+								</div>
+							</div>
+							<div id="fillerbottom">
+			                  	<div id="maincontentbottom">
+			                    	<div id="maincontentbottom2"/>
+			                  	</div>
+			                </div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<footer>
+		<div class="footer">
+			<ui:include src="footer.xhtml" />
+		</div>
+	</footer>
+	<p:dock>
+<p:menuitem value="Home" icon="/images/dock/home.png" url="#" />
+<p:menuitem value="Music" icon="/images/dock/music.png" url="#" />
+<p:menuitem value="Video" icon="/images/dock/video.png" url="#"/>
+<p:menuitem value="Email" icon="/images/dock/email.png" url="#"/>
+<p:menuitem value="Link" icon="/images/dock/link.png" url="#"/>
+<p:menuitem value="RSS" icon="/images/dock/rss.png" url="#"/>
+<p:menuitem value="History" icon="/images/dock/history.png" url="#"/>
+</p:dock>
+<h:outputStylesheet name="default.css" library="css" value="default.css"></h:outputStylesheet>
+</h:body>
+</html>

@@ -1,26 +1,25 @@
 package com.ttech.advn.prj.service;
 
-import java.util.List;
+import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.ttech.advn.prj.dao.ISwitchBoardDAO;
-import com.ttech.advn.prj.dao.entity.SwitchboardItem;
+import com.ttec.advn.prj.support.AbstractSupportService;
+import com.ttech.advn.prj.dao.RoleDAOIFace;
+import com.ttech.advn.prj.dao.entity.Role;
 
 @Service
 @Transactional
-public class SwitchBoardService implements ISwitchBoardService {
+public class SwitchBoardService extends AbstractSupportService<Role> implements ISwitchBoardService {
 
 	@Autowired
-	ISwitchBoardDAO<SwitchboardItem> switchBoardDao;
+	RoleDAOIFace<Role> RoleDao;
 	
-	@Override
-	public List<SwitchboardItem> getResultset() {
-		return switchBoardDao.resultSet();
+	@PostConstruct
+	public void setDependants(){
+		setAbstractDAO(RoleDao);
 	}
-	
-	
 
 }
