@@ -11,36 +11,36 @@
 	<ui:define name="body">
 		<h:form jsfc="h:form" id="Form">
 			<p:commandButton action="success" title="AddNew" label="AddNew" value="AddNew" />
-			<p:dataTable var="item" value="#{switchBoardController.resultSet}" paginator="true" rows="15">>
+			<p:dataTable var="user" value="#{userHome.resultSet}" paginator="true" rows="15">>
 				<p:column>
 					<f:facet name="header">
-						<h:outputText value="SwitchboardID" />
+						<h:outputText value="UserId" />
 					</f:facet>
-					<h:outputText value="#{item.id.switchboardID}" />
+					<h:outputText value="#{user.id}" />
 				</p:column>
-				<p:column sortBy="#{item.id.itemNumber}" filterBy="#{item.id.itemNumber}">
+				<p:column sortBy="#{user.userType}" filterBy="#{user.userType}">
 					<f:facet name="header">
-						<h:outputText value="ItemNumber" />
+						<h:outputText value="User Type" />
 					</f:facet>
-					<h:outputText value="#{item.id.itemNumber}" />
+					<h:outputText value="#{user.userType}" />
 				</p:column>
-				<p:column filterBy="#{item.itemText}">
+				<p:column filterBy="#{user.userName}">
 					<f:facet name="header">
-						<h:outputText value="ItemText" />
+						<h:outputText value="User Name" />
 					</f:facet>
-					<h:outputText value="#{item.itemText}" />
-				</p:column>
-				<p:column>
-					<f:facet name="header">
-						<h:outputText value="Command" />
-					</f:facet>
-					<h:outputText value="#{item.command}" />
+					<h:outputText value="#{user.userName}" />
 				</p:column>
 				<p:column>
 					<f:facet name="header">
-						<h:outputText value="Argument" />
+						<h:outputText value="Last Login Date" />
 					</f:facet>
-					<h:outputText value="#{item.argument}" />
+					<h:outputText value="#{user.lastLogin}" />
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Expire Date" />
+					</f:facet>
+					<h:outputText value="#{user.expireDate}" />
 				</p:column>
 			</p:dataTable>
 

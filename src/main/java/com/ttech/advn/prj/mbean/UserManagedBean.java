@@ -21,7 +21,7 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Controller;
 
 import com.ttech.advn.prj.dao.entity.User;
-import com.ttech.advn.prj.service.IUserService;
+import com.ttech.advn.prj.service.UserServiceIFace;
 
 @Data
 @Controller("userMB")
@@ -33,7 +33,7 @@ public class UserManagedBean implements Serializable {
 	private static final String ERROR = "error";
 
 	@Autowired
-	IUserService userService;
+	UserServiceIFace userService;
 
 	List<User> userList;
 

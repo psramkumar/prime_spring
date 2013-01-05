@@ -1,5 +1,7 @@
 package com.ttech.advn.prj.service;
 
+import javax.annotation.PostConstruct;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -10,12 +12,12 @@ import com.ttech.advn.prj.dao.entity.User;
 
 @Service
 @Transactional
-public class UserService extends AbstractSupportService<User> implements IUserService {
+public class UserService extends AbstractSupportService<User> implements UserServiceIFace {
 
 	@Autowired
 	UserDAOIFace<User> userDAO;
 
-	@Override
+	@Override @PostConstruct
 	public void setDependants() {
 		setAbstractDAO(userDAO);
 	}

@@ -17,6 +17,7 @@ import com.ttec.advn.prj.support.AbstractSupportDAOIFace;
  * @copyrights  Code written, Owned, and Licensed by TRIADIC Technologies, Inc
  * @since Jan 3, 2013 
  */
+
 @Service
 @Transactional
 public abstract class AbstractSupportService<T> implements AbstractSupportServiceIFace<T> {

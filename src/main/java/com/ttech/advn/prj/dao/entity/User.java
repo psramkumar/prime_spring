@@ -18,17 +18,17 @@ public class User implements Serializable {
 	@Id	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date createdate;
-	private int createdby;
+	private Date createDate;
+	private int createdBy;
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date deactivateddate;
+	private Date deactivatedDate;
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date expiredate;
-	private Timestamp lastlogin;
+	private Date expireDate;
+	private Timestamp lastLogin;
 	private String password;
 	private short status;
-	private String username;
-	private String usertype;
+	private String userName;
+	private String userType;
 	@OneToMany(mappedBy="user")
 	private Set<UserPreference> userPreference;
 	@ManyToMany
