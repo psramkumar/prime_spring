@@ -5,7 +5,8 @@
 
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<property name="url" value="jdbc:mysql://localhost:3306/triadicx" />
+		<property name="url" value="jdbc:mysql://localhost:3306/triadicx" /> 
+		<!-- <property name="url" value="jdbc:mysql://triadicx.cxkv5afmw0mf.us-east-1.rds.amazonaws.com/triadicx" /> -->
 		<property name="username" value="root" />
 		<property name="password" value="root" />
 	</bean>
@@ -13,7 +14,8 @@
 	<bean id="DataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
 
 		<property name="driverClass" value="com.mysql.jdbc.Driver" />	
-		<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/triadicx" />	
+		<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/triadicx" /> 
+		<!-- <property name="jdbcUrl" value="jdbc:mysql://triadicx.cxkv5afmw0mf.us-east-1.rds.amazonaws.com/triadicx" /> -->
 		<property name="user" value="root" />	
 		<property name="password" value="root" />	
 		

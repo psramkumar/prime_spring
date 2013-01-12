@@ -11,28 +11,30 @@
 </h:head>
 <h:body>
 	<header>
-		<div id="globalheader" class="autocenter">
-			<ui:include src="header.xhtml" />
-		</div>
+		<table style="width: 99.99%;"><tr><td>
+			<div id="globalheader" class="autocenter">
+				<ui:include src="menu.xhtml" />
+			</div>
+		</td></tr>
+		<tr><td>
+			<div id="breadcrumbs" style="height:20px;" class="ui-widget-header">
+				<h:form id="breadNav" title="Bread Crumbs">
+					<div class="userlogin">
+						<h:outputText value="Welcome "/> 
+						<h:outputText value="#{credentials.username} |" rendered="#{identity.loggedIn}"/> 
+						<h:outputText value="Guest " rendered="#{not identity.loggedIn}"/>
+						<h:commandLink value="Settings" rendered="#{identity.loggedIn}"/> | 
+						<h:commandLink value="Sign Out" rendered="#{identity.loggedIn}"/> 
+						<h:commandLink value="Sign in" rendered="#{not identity.loggedIn}"/>
+					</div>
+					<div class="breadcrumb"><ui:insert name="breadNav"/></div><!-- Define the Page Navigation -->
+				</h:form>
+			</div>
+		</td></tr></table>
 	</header>
 	<section>
 		<div id="maincontainer" class="autocenter">
-			<div id="globalnavigation">
-				<ui:include src="menu.xhtml" />
-			</div>
 			<div id="contentarea" class="mainPane">
-				<div id="breadcrumbs">
-					<h:form id="breadNav" title="Bread Crumbs">
-						<p class="userlogin"><h:outputText value="Welcome "/> 
-							<h:outputText value="#{credentials.username} |" rendered="#{identity.loggedIn}"/> 
-							<h:outputText value="Guest " rendered="#{not identity.loggedIn}"/>
-							<h:commandLink value="Settings" rendered="#{identity.loggedIn}"/> | 
-							<h:commandLink value="Sign Out" rendered="#{identity.loggedIn}"/> 
-							<h:commandLink value="Sign in" rendered="#{not identity.loggedIn}"/>
-						</p>
-						<p class="breadcrumb"><ui:insert name="breadNav"/></p><!-- Define the Page Navigation -->
-					</h:form>
-				</div>
 				<div>
 					<div id="maincontent">
 						<div id="middle_content">
@@ -68,15 +70,6 @@
 			<ui:include src="footer.xhtml" />
 		</div>
 	</footer>
-	<p:dock>
-<p:menuitem value="Home" icon="/images/dock/home.png" url="#" />
-<p:menuitem value="Music" icon="/images/dock/music.png" url="#" />
-<p:menuitem value="Video" icon="/images/dock/video.png" url="#"/>
-<p:menuitem value="Email" icon="/images/dock/email.png" url="#"/>
-<p:menuitem value="Link" icon="/images/dock/link.png" url="#"/>
-<p:menuitem value="RSS" icon="/images/dock/rss.png" url="#"/>
-<p:menuitem value="History" icon="/images/dock/history.png" url="#"/>
-</p:dock>
-<h:outputStylesheet name="default.css" library="css" value="default.css"></h:outputStylesheet>
+	<h:outputStylesheet name="desktop.css" library="css" value="desktop.css"/>
 </h:body>
 </html>

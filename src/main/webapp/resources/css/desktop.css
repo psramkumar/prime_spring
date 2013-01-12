@@ -68,7 +68,7 @@ input.checkbox { background:none; border:none; }
 #globalheader .centerTD span { color: #CCC; margin: 0 8px; }
 #globalheader .rightTD{padding :10px; width:25%; text-align: right; }
 #globalheader .logo { display: block; float:left; padding:8px;}
-#globalheader div.orgtitle{border-left:1px solid #CCC; float:left; height:50px; margin:0px 0px; overflow:hidden; padding:0px 0px 0px 10px;}
+#globalheader div.orgtitle{border-left:1px solid #CCC; float:left; height:50px; margin:0px 0px; overflow:hidden; padding:0px 0px 0px 0px;}
 #globalheader div.orgtitle h1{white-space: nowrap; color:#F00; font-size:22px; padding:3px 0 0 0;}
 #globalheader div.orgtitle h2{white-space: nowrap; color:#666; font-size:13px; font-style:italic; font-weight:normal; margin-top:-2px; padding:0;}
 #icon_orgchart { float: right; margin: 5px 5px 0 0; height: 20px; display: block; }
@@ -92,13 +92,13 @@ input.checkbox { background:none; border:none; }
 
 /*Breadcrumbs & User Login*/
 #breadcrumbs{height:19px; background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAFCAIAAADDivseAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAFZJREFUeNqUzMsJwEAIBFAHBEG3/4JszKj7IewhEE+OPoW7059iEflYgyiuA1UFsFLENugu1hVykSlS8hijSU1THULzN3pQMn0pNjOaf3ddKdUr0iPAAEncGtR4/DL+AAAAAElFTkSuQmCC) repeat-x; padding:0px;}
-.breadcrumb {font-size:10px; color:#666; padding:3px 0px 0px 10px; text-align:left;}
+.breadcrumb {font-size:10px; padding:3px 0px 0px 10px; text-align:left;}
 .breadcrumb a:link, .breadcrumb a:visited {font-size:10px; color:#0066CC; text-decoration:none;}
 .breadcrumb a:hover, .breadcrumb a:active {text-decoration:underline;}
-.breadcrumbs {color: #666666; font-size: 10px;  margin: 0;  padding: 5px 0 0 10px; text-align: left;}
+.breadcrumbs {font-size: 10px;  margin: 0;  padding: 5px 0 0 10px; text-align: left;}
 
-.userlogin {color:#666666; font-size:10px; text-align:left; float:right; padding:3px 10px 0 0;}
-.userlogin span {margin:0 5px;}
+.userlogin {font-size:10px; text-align:left; float:right; padding:3px 10px 0 0;}
+.userlogin span {padding:0 5px;}
 
 
 /*Round Corners Container*/
@@ -336,14 +336,20 @@ Global Footer
 #globalfooter a:active{border-right:1px solid #CCC; color:#999; margin-right:5px; padding-right:5px; text-decoration:none;}
 #globalfooter a:hover{text-decoration:underline;}
 
-#fixfooter {position: fixed; left: 0px; bottom: 0px; height: 30px; width: 100%; background: #900;}
-#fixfooter span {padding-top: 5px; padding-left: 10px; margin: 0 auto; width:600px;}
+#fixfooter {position: fixed; left: 0px; bottom: 0px; height: 35px; width: 100%;}
 /* IE 6 */
 * html #fixfooter {position: absolute;
 	top: expression(( 0 -( footer.offsetHeight)+
 		(document.documentElement.clientHeight ? document.documentElement.clientHeight 
 			: document.body.clientHeight )+(ignoreMe=document.documentElement.scrollTop ?  
 			document.documentElement.scrollTop:document.body.scrollTop ) )+'px' );
+}
+
+.standard-border-radius{
+	border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	-khtml-border-radius: 10px;
 }
 
 .acc-expand-bkgs { background-color: #E5E4E5; background-image: url(data:image/gif;base64,R0lGODlhBAAEAJEAAOfk59nX2czIzOXk5SH5BAAAAAAALAAAAAAEAAQAAAIHxCQzEaisCgA7);  background-repeat: repeat; background-position: 0 0;  -moz-box-shadow: inset -5px 5px 5px #888,inset 0 -5px 5px #888; -webkit-box-shadow: inset 0 5px 5px #888,inset 0 -5px 5px #888;  box-shadow: inset 0 -3px 8px #888,inset 0 3px 8px #888;}

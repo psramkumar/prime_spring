@@ -5,8 +5,9 @@
 	xmlns:p="http://primefaces.org/ui">
 <h:head></h:head>
 <h:body>
+	<style>.ui-menu {padding: 0px;}</style>
 	<h:form>
-		<p:menubar>
+		<p:menubar style="width: 100%" autoDisplay="false">
 			<p:submenu label="File" icon="ui-icon-document">
 				<p:submenu label="New" icon="ui-icon-contact">
 					<p:menuitem value="Project" url="#" />
@@ -46,16 +47,17 @@
 			</p:submenu>
 
 			<p:menuitem value="Quit" url="http://www.primefaces.org" icon="ui-icon-close" />
-
-			<f:facet name="options">
-				<p:inputText style="margin-right:10px" />
-				<p:commandButton type="button" value="Logout" icon="ui-icon-extlink" />
+			 <f:facet name="options">
+			 	<div class="orgtitle">
+					<h1>Triadic Technologies</h1>
+					<h2 align="center">Change the way even better</h2>
+				</div>
+				<!--  <p:themeSwitcher id="defaultSwitcher">  
+							        <f:selectItem itemLabel="Choose Theme" itemValue="" />  
+							        <f:selectItems value="#{themeChangeBean.themes}" />  
+							    </p:themeSwitcher> -->
 			</f:facet>
 		</p:menubar>
-		<p:breadCrumb >
-			<p:menuitem label="Categories" url="#" />
-			<p:menuitem label="Sports" url="#" />
-		</p:breadCrumb>
 	</h:form>
 </h:body>
 </html>
