@@ -6,106 +6,55 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:pe="http://primefaces.org/ui/extensions">
-<ui:composition template="/pages/templates/desktop/template.xhtml">
-	<ui:define name="head">
-	
+<ui:composition template="/pages/templates/layout/template.xhtml">
+	<ui:define name="head"></ui:define>
+	<ui:define name="contentHeader">Home Page</ui:define>
+	<ui:define name="breadNav">
+		 <ul class="breadcrumb">
+			<li><a href="#">Home</a></li>
+			<li><a href="#">Vehicles</a></li>
+			<li><a href="#">Vans</a></li>
+			<li><a href="#">Camper Vans</a></li>
+			<li><a href="#">1989 VW Westfalia Vanagon</a></li>
+			<li><a href="#">Vanagon</a></li>
+		</ul> 
 	</ui:define>
-	<ui:define name="contentHeader">
-		Home Page
-	</ui:define><ui:define name="breadNav">Index Page</ui:define>
-	<ui:define name="body" >
+	<ui:define name="body">
 		<div>
-			<h:form>
-				<table>
-				<tr><td colspan="2"><h:commandLink action="home" title="Home" value="Home"/></td></tr>
-				<tr><td colspan="2"><h:commandLink action="userhome" title="UserHome" value="UserHome"/></td></tr>
-				</table>
-				<h:outputText value="Date Of Birth " />
-				<p:inputMask  mask="99/99/9999" />
-				<h:outputText value="Phone: " />
-				<p:inputMask  mask="(999) 999-9999"/>
-				<h:outputText value="Phone with Ext: " />
-				<p:inputMask  mask="(999) 999-9999? x99999"/>
-				<h:outputText value="SSN: " />
-				<p:inputMask  mask="999-99-9999"/>
-				<h:outputText value="Product Key: " />
-				<p:inputMask mask="a*-999-a999"/>
+			<h:form id="dash-form">
+				<p:growl id="growl" showDetail="true" />
+				
+				<p:dashboard id="board" model="#{dashBoardModelBean.model}" >
+					<p:ajax event="reorder" listener="#{dashBoardModelBean.handleReorder}" update="growl" />
+	
+					<p:panel id="sports" header="Sports"  closable="true" styleClass="ui-dashboard-wickget" >
+						<p:barChart id="horizontal" value="#{dashBoardModelBean.categoryModel}" legendPosition="se" style="height:300px"
+            title="Horizontal Bar Chart" orientation="horizontal" min="0" max="200"/>
+					</p:panel>
+	
+					<p:panel id="finance" header="Finance" closable="true" styleClass="ui-dashboard-wickget">
+						<p:barChart id="basic" value="#{dashBoardModelBean.categoryModel}" legendPosition="ne"
+            title="Basic Bar Chart" min="0" max="200" style="height:300px"/>
+					</p:panel>
+	
+					<p:panel id="lifestyle" header="Lifestyle" closable="true" styleClass="ui-dashboard-wickget">
+						<p:barChart id="stacked" value="#{dashBoardModelBean.categoryModel}" legendPosition="ne" style="height:300px"
+            title="Stacked Bar Chart" stacked="true" barMargin="50" min="0" max="300"/>
+					</p:panel>
+	
+					<p:panel id="weather" header="Weather" closable="true" styleClass="ui-dashboard-wickget">
+						<h:outputText value="Weather Content" />
+					</p:panel>
+	
+					<p:panel id="politics" header="Politics" closable="true" styleClass="ui-dashboard-wickget">
+						<h:outputText value="Politics Content" />
+					</p:panel>
+				</p:dashboard>
 			</h:form>
-	<h:form prependId="false">
-
-		<p:growl id="msgs" />
-
-		<p:panel header="Inplace Editor">
-			<h:panelGrid columns="2" columnClasses="column" cellpadding="5">
-				<h:outputText value="Basic Input: " />
-				<p:inplace id="basic">
-					<p:inputText value="Edit Me" />
-				</p:inplace>
-
-				<h:outputText value="Ajax Inplace Editor: " />
-				<p:inplace id="ajaxInplace" editor="true">
-					<p:inputText value="#{inplaceBean.text}" required="true"
-						label="text" />
-				</p:inplace>
-
-				<h:outputText value="Select One (Dlbclick): " />
-				<p:inplace id="selectableInplace" label="Cities" effectSpeed="fast"
-					event="dblclick">
-					<h:selectOneMenu>
-						<f:selectItem itemLabel="Istanbul" itemValue="Istanbul" />
-						<f:selectItem itemLabel="Ankara" itemValue="Ankara" />
-						<f:selectItem itemLabel="Istanbul" itemValue="Istanbul" />
-					</h:selectOneMenu>
-				</p:inplace>
-
-				<h:outputText value="Checkbox: " />
-				<p:inplace id="checkboxInplace" label="Edit me" effect="none">
-					<h:selectBooleanCheckbox />
-				</p:inplace>
-
-				<h:outputText value="Sliding Image: " />
-				<p:inplace id="slidingInplace" label="Show" effect="slide">
-					<p:graphicImage
-						value="http://www.primefaces.org/showcase-labs/images/loading.gif" />
-				</p:inplace>
-			</h:panelGrid>
-		</p:panel>
-
-	</h:form>
-	
-	<h:panelGroup id="dynaFormGroup">
-	    <p:messages id="messages" showSummary="true"/>
-	
-	    <pe:dynaForm id="dynaForm" value="#{userMB.model}" var="data">
-	        <pe:dynaFormControl type="input" for="txt">
-	            <p:inputText id="txt" value="#{data.value}" required="#{data.required}"/>
-	        </pe:dynaFormControl>
-	        <pe:dynaFormControl type="calendar" for="cal" styleClass="calendar" >
-	            <p:calendar id="cal" value="#{data.value}" required="#{data.required}" />
-	        </pe:dynaFormControl>
-	        <pe:dynaFormControl type="select" for="sel" styleClass="select">
-	            <p:selectOneMenu id="sel" value="#{data.value}" required="#{data.required}">
-	                <f:selectItems value="#{userMB.languages}"/>
-	            </p:selectOneMenu>
-	        </pe:dynaFormControl>
-	        <pe:dynaFormControl type="textarea" for="tarea">
-	            <p:inputTextarea id="tarea" value="#{data.value}" required="#{data.required}" autoResize="false"/>
-	        </pe:dynaFormControl>
-	        <pe:dynaFormControl type="rating" for="rat">
-	            <p:rating id="rat" value="#{data.value}" required="#{data.required}"/>
-	        </pe:dynaFormControl>
-	
-	        <f:facet name="buttonBar">
-	            <p:commandButton value="Submit" action="#{userMB.submitForm}"/>
-	            <p:commandButton type="reset" value="Reset" style="margin-left: 5px;"/>
-	        </f:facet>
-	    </pe:dynaForm>
-	</h:panelGroup>
-	       
 		</div>
 	</ui:define>
 	<ui:define name="footer">
-	
+
 	</ui:define>
 </ui:composition>
 </html>

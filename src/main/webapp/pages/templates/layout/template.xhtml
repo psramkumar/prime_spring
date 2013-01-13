@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>G A R D I A N SHIP - <ui:insert name="pageTitle" /></title>
+	<ui:insert name="head" />
+	<meta charset="ISO-8859-1" />
+</h:head>
+<h:body>
+<style>
+.ui-layout-unit, .ui-layout-unit-content {padding: 0px !important ;  border: 0px none !important ; }
+.ui-disable-scroll, .ui-disable-scroll div {overflow: hidden !important;}
+</style>
+	<p:layout fullPage="true">
+		<p:layoutUnit position="north" closable="true" styleClass="ui-disable-scroll">
+			<header>
+				<table style="width:100%;">
+					<tr>
+						<td>
+							<div id="globalheader" class="autocenter">
+								<ui:include src="menu.xhtml" />
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div id="breadcrumbs" style="height: 23px;"	class="ui-widget-header">
+								<h:form id="breadNav" title="Bread Crumbs">
+									<div class="userlogin">
+										<h:outputText value="Welcome " />
+										<h:outputText value="#{credentials.username} |" rendered="#{identity.loggedIn}" />
+										<h:outputText value="Guest " rendered="#{not identity.loggedIn}" />
+										<h:commandLink value="Settings" rendered="#{identity.loggedIn}" />
+										<h:outputText value="|" />
+										<h:commandLink value="Sign Out" rendered="#{identity.loggedIn}" />
+										<h:commandLink value="Sign in" rendered="#{not identity.loggedIn}" />
+									</div>
+									<div class="breadnav">
+										<ui:insert name="breadNav" />
+									</div>
+									<!-- Define the Page Navigation -->
+								</h:form>
+							</div>
+						</td>
+					</tr>
+				</table>
+			</header>
+		</p:layoutUnit>
+		
+		<p:layoutUnit position="west" size="300"><h:outputText value="Left content" /></p:layoutUnit>
+		<!-- <p:layoutUnit position="east" size="20">right</p:layoutUnit>  -->
+		<!--<p:layoutUnit position="south" size="100">Footer</p:layoutUnit> -->
+		<p:layoutUnit position="center">
+			<section id="content-body">
+				<ui:insert name="body" />
+			</section>
+			<footer>
+				<ui:include src="footer.xhtml" />
+			</footer>
+		</p:layoutUnit>
+	</p:layout>
+	<h:outputStylesheet name="styles.css" library="css" value="styles.css" />
+</h:body>
+</html>
