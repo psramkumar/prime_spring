@@ -14,7 +14,7 @@
 .ui-layout-unit, .ui-layout-unit-content {padding: 0px !important ;  border: 0px none !important ; }
 .ui-disable-scroll, .ui-disable-scroll div {overflow: hidden !important;}
 </style>
-	<p:layout fullPage="true">
+	<p:layout fullPage="true" styleClass="ui-widget-content ui-widget-overlay">
 		<p:layoutUnit position="north" closable="true" styleClass="ui-disable-scroll">
 			<header>
 				<table style="width:100%;">
@@ -31,12 +31,12 @@
 								<h:form id="breadNav" title="Bread Crumbs">
 									<div class="userlogin">
 										<h:outputText value="Welcome " />
-										<h:outputText value="#{credentials.username} |" rendered="#{identity.loggedIn}" />
-										<h:outputText value="Guest " rendered="#{not identity.loggedIn}" />
-										<h:commandLink value="Settings" rendered="#{identity.loggedIn}" />
-										<h:outputText value="|" />
-										<h:commandLink value="Sign Out" rendered="#{identity.loggedIn}" />
-										<h:commandLink value="Sign in" rendered="#{not identity.loggedIn}" />
+										<h:outputText value="#{principal.username} |" rendered="#{isAuthenticated}" />
+										<h:outputText value="Guest " rendered="#{not isAuthenticated}" />
+										<h:commandLink value="Settings" rendered="#{isAuthenticated}" />
+										<h:outputText value="  |  " />
+										<h:commandLink value="Sign Out" rendered="#{isAuthenticated}" action="/j_spring_security_logout"/>
+										<h:commandLink value="Sign in" rendered="#{not isAuthenticated}" action="/j_spring_security_login"/>
 									</div>
 									<div class="breadnav">
 										<ui:insert name="breadNav" />
@@ -50,7 +50,12 @@
 			</header>
 		</p:layoutUnit>
 		
-		<p:layoutUnit position="west" size="300"><h:outputText value="Left content" /></p:layoutUnit>
+		<p:layoutUnit position="west" size="300">
+			<p:themeSwitcher id="defaultSwitcher" style="width:290px; vertical-align: bottom;" label="Theme">  
+		        <f:selectItem itemLabel="Choose Theme" itemValue="" style="width:290px;"/>  
+		        <f:selectItems value="#{themeChangeBean.themes}" style="width:290px;"/>  
+		    </p:themeSwitcher>
+		</p:layoutUnit>
 		<!-- <p:layoutUnit position="east" size="20">right</p:layoutUnit>  -->
 		<!--<p:layoutUnit position="south" size="100">Footer</p:layoutUnit> -->
 		<p:layoutUnit position="center">

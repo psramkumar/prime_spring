@@ -50,7 +50,7 @@ input.checkbox { background:none; border:none; }
 .bknd_yellow { background-color:#FFFBBE; }
 .border_solid{border:1px solid #CCC;}
 .border_dashed{border:1px dashed #CCC;}
-.border_dotted{border:1px dotted #CCC;}
+.border_dotted{border:1px dotted #CCC; }
 
 /*Global Header*/
 #globalheader { background:#fff; height:15% !important; }
@@ -63,7 +63,7 @@ input.checkbox { background:none; border:none; }
 #globalheader .centerTD span { color: #CCC; margin: 0 8px; }
 #globalheader .rightTD{padding :10px; width:25%; text-align: right; }
 #globalheader .logo { display: block; float:left; padding:8px;}
-#globalheader div.orgtitle{border-left:1px solid #CCC; float:left; height:50px; margin:0px 0px; overflow:hidden; padding:0px 0px 0px 0px;}
+#globalheader div.orgtitle{border-left:1px solid #CCC; float:left; height:50px; margin:0px 0px; overflow:hidden; padding:0px 10px 0px 0px;}
 #globalheader div.orgtitle h1{white-space: nowrap; color:#F00; font-size:22px; padding:3px 0 0 0;}
 #globalheader div.orgtitle h2{white-space: nowrap; color:#666; font-size:13px; font-style:italic; font-weight:normal; margin-top:-2px; padding:0;}
 #icon_orgchart { float: right; margin: 5px 5px 0 0; height: 20px; display: block; }
@@ -84,9 +84,9 @@ Global Footer
 
 /*Breadcrumbs & User Login*/
 #breadcrumbs{height:20px; background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAFCAIAAADDivseAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAFZJREFUeNqUzMsJwEAIBFAHBEG3/4JszKj7IewhEE+OPoW7059iEflYgyiuA1UFsFLENugu1hVykSlS8hijSU1THULzN3pQMn0pNjOaf3ddKdUr0iPAAEncGtR4/DL+AAAAAElFTkSuQmCC) repeat-x; padding:0px;}
-.userlogin {font-size:10px; text-align:left; float:right; padding:3px 10px 0 0;}
+.userlogin {font-size:10px; text-align:left; float:right; padding:7px 15px 0 0;}
 .userlogin span {padding:0 5px;}
-.breadnav{padding: 3px 0px 0px 0px;}
+.breadnav{padding: 4px 0px 0px 0px;}
 .breadcrumb {list-style: none; overflow: hidden; font: 10px Helvetica, Arial, Sans-Serif;}
 .breadcrumb li {float: left; }
 .breadcrumb li a {

@@ -3,6 +3,12 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
 	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 
+	<bean id="dbPropertyConfigurer"	class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list><value>classpath:db.properties</value></list>
+		</property>
+	</bean>
+	
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
 		<property name="url" value="jdbc:mysql://localhost:3306/triadicx" /> 
@@ -13,11 +19,15 @@
 	
 	<bean id="DataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
 
-		<property name="driverClass" value="com.mysql.jdbc.Driver" />	
+		<!-- <property name="driverClass" value="com.mysql.jdbc.Driver" />	
 		<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/triadicx" /> 
-		<!-- <property name="jdbcUrl" value="jdbc:mysql://triadicx.cxkv5afmw0mf.us-east-1.rds.amazonaws.com/triadicx" /> -->
 		<property name="user" value="root" />	
-		<property name="password" value="root" />	
+		<property name="password" value="root" /> -->
+		
+		<property name="driverClass" value="${jdbc.driver}"/>
+		<property name="jdbcUrl" value="${jdbc.url}" />
+		<property name="user" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" /> 	
 		
 		<property name="maxPoolSize" value="10" />
 		<property name="maxStatements" value="0" />
@@ -25,6 +35,36 @@
 		<property name="idleConnectionTestPeriod" value="15"/>
 		<property name="maxIdleTime" value="15"/>
 
+	</bean>
+	
+	<bean id="SessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource" ref="DataSource" />
+		<property name="packagesToScan" value="com.ttech.advn.prj" />
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">${jdbc.hibernate.dialect}</prop>
+				<!-- <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop> -->
+				<prop key="hibernate.hbm2ddl.auto">create</prop> 
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.c3p0.min_size">3</prop>
+				<prop key="hibernate.c3p0.max_size">40</prop>
+				<prop key="hibernate.c3p0.timeout">25200</prop>
+				<prop key="hibernate.c3p0.max_statements">0</prop>
+				<prop key="hibernate.c3p0.idle_test_period">14400</prop>
+
+				<prop key="connection.autoReconnect">true</prop>
+				<prop key="connection.autoReconnectForPools">true</prop>
+				<prop key="connection.is-connection-validation-required">true</prop>
+				<prop key="hibernate.c3p0.acquire_increment">3</prop>
+				<prop key="hibernate.c3p0.preferredTestQuery">select 1</prop>
+				<prop key="defaultAutoCommit">false</prop>
+				
+			</props>
+		</property>
+	</bean>
+	
+	<bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="SessionFactory"/>
 	</bean>
 
 </beans>
