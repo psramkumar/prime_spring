@@ -9,13 +9,14 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 
 import lombok.Getter;
-import lombok.Setter;
 
 import org.primefaces.event.DashboardReorderEvent;
 import org.primefaces.model.DashboardColumn;
 import org.primefaces.model.DashboardModel;
 import org.primefaces.model.DefaultDashboardColumn;
 import org.primefaces.model.DefaultDashboardModel;
+import org.primefaces.model.chart.BubbleChartModel;
+import org.primefaces.model.chart.BubbleChartSeries;
 import org.primefaces.model.chart.CartesianChartModel;
 import org.primefaces.model.chart.ChartSeries;
 import org.springframework.stereotype.Controller;
@@ -34,6 +35,8 @@ public class DashBoardModelBean implements Serializable {
 	private DashboardModel model;
 	@Getter  
 	private CartesianChartModel categoryModel;
+	@Getter  
+	private BubbleChartModel bubbleModel;  
 	
 	public DashBoardModelBean() {
 		model = new DefaultDashboardModel();
@@ -75,6 +78,16 @@ public class DashBoardModelBean implements Serializable {
 
         categoryModel.addSeries(boys);
         categoryModel.addSeries(girls);
+        
+        bubbleModel = new BubbleChartModel();  
+        
+        bubbleModel.add(new BubbleChartSeries("Acura", 70, 183,55));  
+        bubbleModel.add(new BubbleChartSeries("Alfa Romeo", 45, 92, 36));  
+        bubbleModel.add(new BubbleChartSeries("AM General", 24, 104, 40));  
+        bubbleModel.add(new BubbleChartSeries("Bugatti", 50, 123, 60));  
+        bubbleModel.add(new BubbleChartSeries("BMW", 15, 89, 25));  
+        bubbleModel.add(new BubbleChartSeries("Audi", 40, 180, 80));  
+        bubbleModel.add(new BubbleChartSeries("Aston Martin", 70, 70, 48)); 
 	}
 	
 	public void handleReorder(DashboardReorderEvent event) {

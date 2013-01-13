@@ -28,26 +28,23 @@
 					<p:ajax event="reorder" listener="#{dashBoardModelBean.handleReorder}" update="growl" />
 	
 					<p:panel id="sports" header="Sports"  closable="true" styleClass="ui-dashboard-wickget" >
-						<p:barChart id="horizontal" value="#{dashBoardModelBean.categoryModel}" legendPosition="se" style="height:300px"
-            title="Horizontal Bar Chart" orientation="horizontal" min="0" max="200"/>
+						<p:barChart id="horizontal" value="#{dashBoardModelBean.categoryModel}" legendPosition="se" style="height:300px" title="Horizontal Bar Chart" orientation="horizontal" min="0" max="200"/>
 					</p:panel>
 	
 					<p:panel id="finance" header="Finance" closable="true" styleClass="ui-dashboard-wickget">
-						<p:barChart id="basic" value="#{dashBoardModelBean.categoryModel}" legendPosition="ne"
-            title="Basic Bar Chart" min="0" max="200" style="height:300px"/>
+						<p:barChart id="basic" value="#{dashBoardModelBean.categoryModel}" legendPosition="ne" title="Basic Bar Chart" min="0" max="200" style="height:300px"/>
 					</p:panel>
 	
 					<p:panel id="lifestyle" header="Lifestyle" closable="true" styleClass="ui-dashboard-wickget">
-						<p:barChart id="stacked" value="#{dashBoardModelBean.categoryModel}" legendPosition="ne" style="height:300px"
-            title="Stacked Bar Chart" stacked="true" barMargin="50" min="0" max="300"/>
+						<p:barChart id="stacked" value="#{dashBoardModelBean.categoryModel}" legendPosition="ne" style="height:300px" title="Stacked Bar Chart" stacked="true" barMargin="50" min="0" max="300"/>
 					</p:panel>
 	
 					<p:panel id="weather" header="Weather" closable="true" styleClass="ui-dashboard-wickget">
-						<h:outputText value="Weather Content" />
+						<p:bubbleChart id="sample" value="#{dashBoardModelBean.bubbleModel}" xaxisLabel="Price" yaxisLabel="Labels" title="Sample Bubble Chart" style="width:400px;height:300px" />
 					</p:panel>
 	
 					<p:panel id="politics" header="Politics" closable="true" styleClass="ui-dashboard-wickget">
-						<h:outputText value="Politics Content" />
+						<p:bubbleChart id="custom" value="#{dashBoardModelBean.bubbleModel}" shadow="false" bubbleGradients="true" bubbleAlpha="0.8" title="Custom Bubble Chart" style="width:400px;height:300px" xaxisAngle="-50" yaxisAngle="50"/> 
 					</p:panel>
 				</p:dashboard>
 			</h:form>
