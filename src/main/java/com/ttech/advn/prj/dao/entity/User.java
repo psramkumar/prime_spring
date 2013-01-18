@@ -28,6 +28,8 @@ public class User implements Serializable {
 	private String password;
 	private short status;
 	private String userName;
+	private String firstName;
+	private String lastName;
 	private String userType;
 	@OneToMany(mappedBy="user")
 	private Set<UserPreference> userPreference;

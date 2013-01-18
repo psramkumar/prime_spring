@@ -36,4 +36,6 @@ public abstract class AbstractSupportController<T> {
 	public T getInstance() {if (instance == null) {newInstance();}return instance;}
 
 	@SneakyThrows public T newInstance(){return instance = getEntityClass().newInstance();}
+	
+	public void reset(){ newInstance(); }
 }

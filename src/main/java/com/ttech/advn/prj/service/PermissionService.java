@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.ttec.advn.prj.support.AbstractSupportService;
-import com.ttech.advn.prj.dao.PermissionDAO;
+import com.ttech.advn.prj.dao.PermissionDAOIFace;
 import com.ttech.advn.prj.dao.entity.Permission;
 
 /**
@@ -24,7 +24,7 @@ import com.ttech.advn.prj.dao.entity.Permission;
 public class PermissionService extends AbstractSupportService<Permission> implements PermissionServiceIFace {
 
 	@Autowired
-	PermissionDAO permissionDao;
+	PermissionDAOIFace<Permission> permissionDao;
 	
 	@Override @PostConstruct
 	public void setDependants() {

@@ -15,7 +15,9 @@
 .ui-disable-scroll, .ui-disable-scroll div {overflow: hidden !important;}
 </style>
 	<p:layout fullPage="true" styleClass="ui-widget-content ui-widget-overlay">
-		<p:layoutUnit position="north" closable="true" styleClass="ui-disable-scroll">
+		<!--<p:layoutUnit position="north" closable="true" styleClass="ui-disable-scroll">
+		</p:layoutUnit> -->
+		<p:layoutUnit position="center">
 			<header>
 				<table style="width:100%;">
 					<tr>
@@ -48,6 +50,12 @@
 					</tr>
 				</table>
 			</header>
+			<section id="content-body">
+				<ui:insert name="body" />
+			</section>
+			<footer>
+				<ui:include src="footer.xhtml" />
+			</footer>
 		</p:layoutUnit>
 		
 		<p:layoutUnit position="west" size="300">
@@ -58,14 +66,7 @@
 		</p:layoutUnit>
 		<!-- <p:layoutUnit position="east" size="20">right</p:layoutUnit>  -->
 		<!--<p:layoutUnit position="south" size="100">Footer</p:layoutUnit> -->
-		<p:layoutUnit position="center">
-			<section id="content-body">
-				<ui:insert name="body" />
-			</section>
-			<footer>
-				<ui:include src="footer.xhtml" />
-			</footer>
-		</p:layoutUnit>
+		
 	</p:layout>
 	<h:outputStylesheet name="styles.css" library="css" value="styles.css" />
 </h:body>

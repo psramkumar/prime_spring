@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/pages/templates/layout/template.xhtml">
+	<ui:define name="pageTitle">Facility Home</ui:define>
+	<ui:define name="pageHeader">Facility Management</ui:define>
+	<ui:define name="body">
+	<h:form jsfc="h:form" id="Formovr">
+		<p:commandButton id="addnewBtn" title="AddNew" label="AddNew" value="AddNew" />
+	    <p:overlayPanel id="chartPanel" for="addnewBtn" hideEffect="fade" >  
+	        <p:panel>
+				<p:panelGrid columns="2" >
+					<p:outputLabel title="Role Id">Role Id</p:outputLabel>
+					<p:inputText value="#{roleHome.instance.id}"/>
+					<p:outputLabel title="Role Name">Role Name</p:outputLabel>
+					<p:inputText value="#{roleHome.instance.name}"/>
+					<p:outputLabel title="Role Display Name">Display Name</p:outputLabel>
+					<p:inputText value="#{roleHome.instance.roleName}"/>
+					<p:outputLabel title="Description ">Description</p:outputLabel>
+					<p:inputTextarea value="#{roleHome.instance.description}"/>
+					<p:commandButton id="addUser" value="Add" action="#{roleHome.addRole}" ajax="false" />
+					<p:commandButton id="reset" value="Reset" action="#{roleHome.reset}" ajax="false" />
+				</p:panelGrid>
+			</p:panel>
+	    </p:overlayPanel>  
+    </h:form>
+    <h:form jsfc="h:form" id="Form">
+			<p:dataTable var="role" value="#{roleHome.roleSet}" paginator="true" rows="15" id="facTbl">
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Role ID" />
+					</f:facet>
+					<h:outputText value="#{role.id}" />
+				</p:column>
+				<p:column sortBy="#{role.name}" filterBy="#{role.name}">
+					<f:facet name="header">
+						<h:outputText value="Role Name" />
+					</f:facet>
+					<h:outputText value="#{role.name}" />
+				</p:column>
+				<p:column filterBy="#{role.roleName}">
+					<f:facet name="header">
+						<h:outputText value="Display Name" />
+					</f:facet>
+					<h:outputText value="#{role.roleName}" />
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Role Description" />
+					</f:facet>
+					<h:outputText value="#{role.description}" />
+				</p:column>
+			</p:dataTable>
+		</h:form>
+	</ui:define>
+</ui:composition>
+
+</html>

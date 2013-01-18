@@ -19,17 +19,8 @@ public class UserHomeController extends AbstractSupportController<User> {
 		return userService.getResultSet();
 	}
 	
-	public String addUser(){
+	public void addUser(){
 		userService.save(getInstance());
-		return "userHome";
+		//return "userHome";
 	}
-	public String reset(){
-		newInstance();
-		return "success";
-	}
-
-	
-
-	
-
 }

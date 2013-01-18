@@ -6,7 +6,7 @@
 <h:head></h:head>
 <h:body>
 	<style>.ui-menu {padding: 0px;}</style>
-	<h:form>
+	<h:form id="menu_form" jsfc="h:form">
 		<p:menubar style="width: 100%" autoDisplay="false">
 			<p:submenu label="File" icon="ui-icon-document">
 				<p:submenu label="New" icon="ui-icon-contact">
@@ -18,9 +18,10 @@
 				<p:menuitem value="Quit" url="#" />
 			</p:submenu>
 
-			<p:submenu label="Edit" icon="ui-icon-pencil">
-				<p:menuitem value="Undo" url="#" icon="ui-icon-arrowreturnthick-1-w" />
-				<p:menuitem value="Redo" url="#" icon="ui-icon-arrowreturnthick-1-e" />
+			<p:submenu label="Config" icon="ui-icon-pencil">
+				<p:menuitem value="User Mgmnt" url="/pages/userhome.xhtml"  icon="ui-icon-arrowreturnthick-1-w" />
+				<p:menuitem value="Role Mgmnt" url="/pages/rolehome.xhtml" icon="ui-icon-arrowreturnthick-1-e" />
+				<p:menuitem value="Facility Mgmnt" url="/pages/facilityHome.xhtml" icon="ui-icon-arrowreturnthick-1-e" />
 			</p:submenu>
 
 			<p:submenu label="Help" icon="ui-icon-help">

@@ -3,6 +3,8 @@
  */
 package com.ttech.advn.prj.service;
 
+import java.util.List;
+
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +12,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.ttec.advn.prj.support.AbstractSupportService;
-import com.ttech.advn.prj.dao.RoleDAO;
+import com.ttech.advn.prj.dao.PermissionDAOIFace;
+import com.ttech.advn.prj.dao.RoleDAOIFace;
+import com.ttech.advn.prj.dao.entity.Permission;
 import com.ttech.advn.prj.dao.entity.Role;
 
 /**
@@ -24,11 +28,19 @@ import com.ttech.advn.prj.dao.entity.Role;
 public class RoleService extends AbstractSupportService<Role> implements RoleServiceIFace{
 
 	@Autowired
-	private RoleDAO roleDao;
+	private RoleDAOIFace<Role> roleDao;
+	
+	@Autowired
+	private PermissionDAOIFace<Permission> permDao;
+	
 	
 	@Override @PostConstruct
 	public void setDependants() {
 		setAbstractDAO(roleDao);
+	}
+	
+	public List<Permission> getPermissionSet(){
+		return permDao.resultSet();
 	}
 
 }
