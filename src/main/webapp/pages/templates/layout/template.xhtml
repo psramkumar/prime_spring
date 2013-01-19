@@ -63,6 +63,18 @@
 		        <f:selectItem itemLabel="Choose Theme" itemValue="" style="width:290px;"/>  
 		        <f:selectItems value="#{themeChangeBean.themes}" style="width:290px;"/>  
 		    </p:themeSwitcher>
+		    <div id="content">
+				<div id="leftnav">
+					<div id="top"> <!-- Follow the same wqay for other Left Nav Headers -->
+		                  <ui:insert name="sessionheader"/>
+		            </div>
+		            <div class="content">
+		            	<ui:include src="leftnav.xhtml" />
+						<ui:insert name="leftNav" /> <!-- Related Menu -->
+					</div>
+					<div id="bottom" />
+				</div>
+			</div>
 		</p:layoutUnit>
 		<!-- <p:layoutUnit position="east" size="20">right</p:layoutUnit>  -->
 		<!--<p:layoutUnit position="south" size="100">Footer</p:layoutUnit> -->
