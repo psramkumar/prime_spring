@@ -8,7 +8,7 @@ import lombok.Data;
 public class BookProperty {
 
 	private String name;
-	private Object value;
+	private int value;
 	private boolean required;
 
 	public BookProperty(String name, boolean required) {
