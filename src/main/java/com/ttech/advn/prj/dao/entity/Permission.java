@@ -7,6 +7,13 @@ import java.util.Set;
 
 import lombok.Data;
 
+/**
+ * 
+ * @author Ramkumar
+ * @copyrights  Code written, Owned, and Licensed by TRIADIC Technologies, Inc
+ * @since Jan 17, 2013 
+ *
+ */
 
 @Data
 @Entity
